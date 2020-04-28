@@ -3,6 +3,7 @@ package com.company.functionalprogrammingpattern.streams;
 import com.company.functionalprogrammingpattern.imperative.Main;
 
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class _Stream {
@@ -29,6 +30,11 @@ public class _Stream {
                 .map(person -> person.name)
                 .mapToInt(String::length)
                 .forEach(System.out::println);
+
+        Predicate<Person> predicate = (person) -> person.name.startsWith("A");
+
+        System.out.println(people.stream()
+                .anyMatch(predicate));
 
         System.out.println(people);
     }
